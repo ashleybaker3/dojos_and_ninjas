@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ninja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body class="d-flex flex-column justify-content-between p-5">
+    <h1>New Ninja</h1>
+    <form action="/submit" method="POST" class="mt-4 col-3 d-flex flex-row">
+        <div class="col d-flex flex-column">
+            <label for="dojo" class="fs-4 row">Dojo:</label>
+            <label for="first_name" class="fs-4 mt-3 row">First Name:</label>
+            <label for="last_name" class="fs-4 mt-3 row">Last Name:</label>
+            <label for="age" class="fs-4 mt-3 row">Age:</label>
+            <div class="row"></div>
+        </div>
+        <div class="col d-flex flex-column">
+            <select name="dojo" class="form-select col border-2 border-dark row" aria-label="Default select example">
+                <option selected>Select Dojo</option>
+                {% for dojo in all_dojos %}
+                <option value="{{dojo.id}}">{{dojo.name}}</option>
+                {% endfor %}
+            </select>
+                <input type="text" name="first_name" class="row mt-3 border-2 border-dark">
+                <input type="text" name="last_name" class="row mt-3 border-2 border-dark">
+                <input type="text" name="age" class="row mt-3 border-2 border-dark">
+                <input type="submit" value="Submit" class="row mt-3 border-2 border-dark bg-dark text-white btn">
+        </div>
+    </form>
+    <a href="/dojos" class="fs-4 mt-5">Home</a>
+</body>
+</html>
