@@ -24,7 +24,7 @@ def get_dojos():
     print(dojos)
     return render_template('new.html', all_dojos=dojos)
 
-@app.route('/submit', methods=["POST"])
+@app.route('/ninjas/new', methods=["POST"])
 def submit():
     data = {
         "dojo_id" : request.form["dojo"],
@@ -33,7 +33,7 @@ def submit():
         "age" : request.form["age"]
     }
     ninja.save(data)
-    return redirect('/dojos/')
+    return redirect('/dojos/'+ request.form['dojo'])
 
 @app.route('/newdojo', methods=["POST"])
 def newDojo():

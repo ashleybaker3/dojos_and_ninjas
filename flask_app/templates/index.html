@@ -21,11 +21,11 @@
     </div>
     <div class="container d-flex flex-column justify-content-start">
         <h1>All Dojos</h1>
-        {% for dojo in all_dojos %}
         <table class="table table-borderless border border-2 border-dark">
+        {% for dojo in all_dojos %}
             <tr><td><a href="/dojos/{{dojo.id}}">{{dojo.name}}</a></td></tr>
+            {% endfor %}
         </table>
-        {% endfor %}
         <a href="/ninjas/new" class="mt-4 fs-5">Add Ninja</a>
     </div>
 </body>
